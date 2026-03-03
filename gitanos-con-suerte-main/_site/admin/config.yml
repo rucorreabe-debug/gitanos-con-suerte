@@ -1,0 +1,48 @@
+backend:
+  name: github
+  repo: tu-usuario/mi-sitio-suerte   # CAMBIA ESTO cuando tengas el repo
+  branch: main
+publish_mode: editorial_workflow
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+
+collections:
+  - name: "sorteos"
+    label: "Sorteos"
+    folder: "sorteos"
+    create: true
+    fields:
+      - {label: "Título", name: "title", widget: "string"}
+      - {label: "Descripción", name: "description", widget: "markdown"}
+      - {label: "Fecha del sorteo", name: "date", widget: "datetime"}
+      - {label: "Imagen principal", name: "image", widget: "image"}
+
+  - name: "eventosCorporativos"
+    label: "Eventos Corporativos"
+    folder: "eventos-corporativos"
+    create: true
+    fields:
+      - {label: "Título", name: "title", widget: "string"}
+      - {label: "Descripción", name: "description", widget: "markdown"}
+      - {label: "Fecha", name: "date", widget: "datetime"}
+      - {label: "Imagen", name: "image", widget: "image"}
+
+  - name: "eventosSociales"
+    label: "Eventos Sociales"
+    folder: "eventos-sociales"
+    create: true
+    fields:
+      - {label: "Título", name: "title", widget: "string"}
+      - {label: "Descripción", name: "description", widget: "markdown"}
+      - {label: "Fecha", name: "date", widget: "datetime"}
+      - {label: "Imagen", name: "image", widget: "image"}
+
+  - name: "viajes"
+    label: "Paquetes de Viajes"
+    folder: "viajes"
+    create: true
+    fields:
+      - {label: "Título", name: "title", widget: "string"}
+      - {label: "Descripción", name: "description", widget: "markdown"}
+      - {label: "Fecha o temporada", name: "date", widget: "datetime"}
+      - {label: "Imagen", name: "image", widget: "image"}
