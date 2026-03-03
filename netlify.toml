@@ -1,0 +1,7 @@
+[build]
+  command = "npx @11ty/eleventy"
+  publish = "_site"
+
+[plugins]
+  [[plugins.inputs]]
+    package = "@netlify/plugin-decap-cms"
