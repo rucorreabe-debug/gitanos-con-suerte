@@ -1,0 +1,35 @@
+backend:
+  name: git-gateway  # o 'gitlab' si usas GitLab
+  branch: main       # cambia si tu rama es master
+
+publish_mode: editorial_workflow
+
+media_folder: "imágenes"      # carpeta para subir fotos
+public_folder: "/imágenes"
+
+collections:
+  - name: "sorteos"
+    label: "Sorteos"
+    folder: "content/sorteos"
+    create: true
+    slug: "{{fecha | date('yyyy-MM-dd')}}-{{title | slugify}}"
+    fields:
+      - {label: "Título", name: "title", widget: "string", required: true}
+      - {label: "Descripción", name: "description", widget: "markdown"}
+      - {label: "Fecha/Hora", name: "fecha", widget: "datetime", format: "YYYY-MM-DD HH:mm", required: true}
+      - {label: "Imagen principal", name: "imagen", widget: "image", required: false}
+      - {label: "Estado", name: "estado", widget: "select", options: ["Próximo", "Activo", "Finalizado"], default: "Próximo"}
+      - {label: "Premio", name: "premio", widget: "string"}
+      - {label: "Enlace de participación", name: "enlace", widget: "string"}
+
+  - name: "eventos"
+    label: "Eventos Sociales"
+    folder: "content/eventos"
+    create: true
+    slug: "{{fecha | date('yyyy-MM-dd')}}-{{title | slugify}}"
+    fields:
+      - {label: "Título", name: "title", widget: "string", required: true}
+      - {label: "Descripción", name: "description", widget: "markdown"}
+      - {label: "Fecha/Hora", name: "fecha", widget: "datetime", format: "YYYY-MM-DD HH:mm", required: true}
+      - {label: "Imagen", name: "imagen", widget: "image"}
+      - {label: "Enlace", name: "enlace", widget: "string"}
