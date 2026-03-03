@@ -1,0 +1,48 @@
+---
+layout: base.njk
+title: Gitanos con Suerte
+---
+<div style="background: linear-gradient(to bottom, #ff6b6b, #ffd93d); color: #333; font-family: Arial, sans-serif; min-height: 100vh; padding: 20px; text-align: center;">
+  <h1 style="font-size: 3em; margin: 20px 0; color: #fff; text-shadow: 2px 2px 4px #000;">Gitanos con Suerte</h1>
+  <p style="font-size: 1.5em; margin-bottom: 40px;">¡Sorteos, rifas y eventos llenos de suerte y alegría!</p>
+
+  <section style="margin: 40px 0;">
+    <h2 style="font-size: 2.5em; color: #fff;">Sorteos Activos</h2>
+    <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px;">
+      {% for sorteo in collections.sorteos | reverse %}
+        <div style="background: white; border-radius: 12px; padding: 20px; width: 300px; box-shadow: 0 4px 15px rgba(0,0,0,0.2);">
+          {% if sorteo.data.imagen %}<img src="{{ sorteo.data.imagen }}" alt="{{ sorteo.data.title }}" style="width: 100%; border-radius: 8px; margin-bottom: 15px;">{% endif %}
+          <h3 style="color: #d32f2f;">{{ sorteo.data.title }}</h3>
+          <p>{{ sorteo.data.description | safe }}</p>
+          <p><strong>Fecha:</strong> {{ sorteo.data.fecha | date("LLLL") }}</p>
+          <p><strong>Premio:</strong> {{ sorteo.data.premio }}</p>
+          <p><strong>Estado:</strong> {{ sorteo.data.estado }}</p>
+          {% if sorteo.data.enlace %}<a href="{{ sorteo.data.enlace }}" style="display: inline-block; background: #d32f2f; color: white; padding: 10px 20px; border-radius: 8px; text-decoration: none; margin-top: 10px;">Participar</a>{% endif %}
+        </div>
+      {% else %}
+        <p>Aún no hay sorteos... ¡pronto habrá suerte!</p>
+      {% endfor %}
+    </div>
+  </section>
+
+  <section style="margin: 40px 0;">
+    <h2 style="font-size: 2.5em; color: #fff;">Eventos Sociales</h2>
+    <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px;">
+      {% for evento in collections.eventos | reverse %}
+        <div style="background: white; border-radius: 12px; padding: 20px; width: 300px; box-shadow: 0 4px 15px rgba(0,0,0,0.2);">
+          {% if evento.data.imagen %}<img src="{{ evento.data.imagen }}" alt="{{ evento.data.title }}" style="width: 100%; border-radius: 8px; margin-bottom: 15px;">{% endif %}
+          <h3 style="color: #1976d2;">{{ evento.data.title }}</h3>
+          <p>{{ evento.data.description | safe }}</p>
+          <p><strong>Fecha:</strong> {{ evento.data.fecha | date("LLLL") }}</p>
+          {% if evento.data.enlace %}<a href="{{ evento.data.enlace }}" style="display: inline-block; background: #1976d2; color: white; padding: 10px 20px; border-radius: 8px; text-decoration: none; margin-top: 10px;">Ver más</a>{% endif %}
+        </div>
+      {% else %}
+        <p>No hay eventos próximos... ¡mantente atento!</p>
+      {% endfor %}
+    </div>
+  </section>
+
+  <footer style="margin-top: 60px; color: #fff;">
+    <p>&copy; {{ "now" | date("yyyy") }} Gitanos con Suerte - ¡Que la suerte te acompañe! 🌟</p>
+  </footer>
+</div>
